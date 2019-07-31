@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fPIC")
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fPIC")
+
 project(litehtml CXX)
 
 add_subdirectory(src/gumbo)
@@ -56,3 +59,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 # Gumbo
 target_link_libraries(${PROJECT_NAME} PUBLIC gumbo)
+
+add_custom_command(TARGET ${PROJECT_NAME}
+    # Run after all other rules within the target have been executed
+    POST_BUILD
+    COMMAND /bin/sh containers/JUCE/build.sh
+    COMMENT "Building JUCE project"
+    VERBATIM
+)

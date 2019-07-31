@@ -21,11 +21,11 @@ namespace litehtml
 {
 	struct list_marker
 	{
-		tstring			image;
+                tstring		image;
 		const tchar_t*	baseurl;
 		list_style_type	marker_type;
-		web_color		color;
-		position		pos;
+                web_color	color;
+                position	pos;
 	};
 
 	// call back interface to draw text, images and other elements
